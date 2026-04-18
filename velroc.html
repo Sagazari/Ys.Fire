@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velroc — Bots que Constroem Comunidades</title>
+  <meta name="description" content="A Velroc é uma empresa especializada em desenvolvimento de bots para Discord. Fundadora do Architect — o bot que cria, protege e restaura servidores com inteligência artificial." />
+  <meta property="og:title" content="Velroc — Bots que Constroem Comunidades" />
+  <meta property="og:description" content="Desenvolvimento de bots para Discord com foco em performance, design e experiência. Conheça o Architect." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="data:image/png;base64,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" />
+  <meta name="theme-color" content="#0b1f12" />
+  <link rel="icon" type="image/png" href="data:image/png;base64,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" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,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" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:    #0b1f12;
+      --green-dark:    #112b18;
+      --green-mid:     #1a4027;
+      --green-accent:  #2d6e45;
+      --green-bright:  #3d9e63;
+      --green-crystal: #6fcf97;
+      --green-glow:    #a8e6c0;
+      --green-pale:    #d4f0e0;
+      --gold:          #c9a84c;
+      --gold-light:    #e8cc80;
+      --cream:         #f5f0e8;
+      --white:         #fafaf8;
+      --glass-bg:      rgba(255,255,255,0.04);
+      --glass-border:  rgba(111,207,151,0.15);
+      --glass-hover:   rgba(111,207,151,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--green-deep);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── Custom Cursor ── */
+    .cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      background: var(--green-crystal);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(111,207,151,0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.3s, height 0.3s;
+    }
+    body:hover .cursor { opacity: 1; }
+
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    /* ── Crystal mesh background ── */
+    .mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .mesh::before {
+      content: '';
+      position: absolute;
+      width: 800px; height: 800px;
+      background: radial-gradient(ellipse, rgba(45,110,69,0.35) 0%, transparent 70%);
+      top: -200px; left: -200px;
+      animation: drift1 20s ease-in-out infinite alternate;
+    }
+    .mesh::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(61,158,99,0.2) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+      animation: drift2 25s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(120px, 80px) scale(1.15); } }
+    @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-80px, -60px) scale(1.2); } }
+
+    /* ── Crystal orb floating ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at 35% 35%, rgba(111,207,151,0.12), rgba(45,110,69,0.06) 50%, transparent 70%);
+      border: 1px solid rgba(111,207,151,0.08);
+      top: 10vh; right: 8vw;
+      animation: float1 12s ease-in-out infinite;
+      backdrop-filter: blur(1px);
+    }
+    .orb-2 {
+      width: 180px; height: 180px;
+      background: radial-gradient(circle at 40% 30%, rgba(168,230,192,0.1), transparent 70%);
+      border: 1px solid rgba(111,207,151,0.06);
+      top: 55vh; left: 5vw;
+      animation: float2 16s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 120px; height: 120px;
+      background: radial-gradient(circle at 30% 30%, rgba(201,168,76,0.08), transparent 70%);
+      border: 1px solid rgba(201,168,76,0.06);
+      bottom: 20vh; right: 20vw;
+      animation: float3 10s ease-in-out infinite;
+    }
+    @keyframes float1 { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-30px) rotate(8deg);} }
+    @keyframes float2 { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-20px) rotate(-6deg);} }
+    @keyframes float3 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      padding: 28px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(111,207,151,0.07);
+      background: rgba(11,31,18,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .nav-logo {
+      font-family: 'Cormorant SC', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--green-crystal);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(212,240,224,0.6);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--green-crystal);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .nav-links a:hover { color: var(--green-crystal); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ── Main layout ── */
+    main { position: relative; z-index: 1; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 10vw;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '— ';
+      color: var(--gold);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      max-width: 820px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--green-crystal);
+      font-weight: 300;
+    }
+    h1 .gold { color: var(--gold-light); font-style: normal; }
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(212,240,224,0.65);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp 1s 0.7s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 1s 0.9s forwards;
+    }
+    .btn-primary {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      background: linear-gradient(135deg, var(--green-crystal), var(--green-bright));
+      padding: 16px 40px;
+      border: none;
+      cursor: none;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--green-glow), var(--green-crystal));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(111,207,151,0.3); }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(212,240,224,0.6);
+      background: none;
+      border: 1px solid rgba(111,207,151,0.2);
+      padding: 16px 40px;
+      cursor: none;
+      text-decoration: none;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--green-crystal); border-color: rgba(111,207,151,0.5); }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 48px; left: 10vw;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 1s 1.3s forwards;
+    }
+    .scroll-hint span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(212,240,224,0.3);
+    }
+    .scroll-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(111,207,151,0.4), transparent);
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--green-crystal);
+      animation: scanLine 2s ease-in-out infinite;
+    }
+    @keyframes scanLine { 0%{left:-100%;} 100%{left:100%;} }
+
+    /* ── Crystal divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 10vw;
+      margin: 0 auto;
+    }
+    .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(111,207,151,0.2), transparent); }
+    .divider-gem {
+      width: 8px; height: 8px;
+      background: var(--green-bright);
+      transform: rotate(45deg);
+      box-shadow: 0 0 12px rgba(111,207,151,0.4);
+    }
+
+    /* ── Section base ── */
+    section { padding: 120px 10vw; position: relative; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 20px;
+      display: block;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    h2 em { font-style: italic; color: var(--green-crystal); }
+
+    /* ── About ── */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-text p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(212,240,224,0.7);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .about-text p strong { color: var(--green-crystal); font-weight: 400; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .stat-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(to right, var(--green-bright), transparent);
+    }
+    .stat-card:hover { background: var(--glass-hover); }
+    .stat-number {
+      font-family: 'Cormorant SC', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--green-crystal);
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(212,240,224,0.4);
+    }
+
+    /* ── Products ── */
+    #products { background: rgba(17,43,24,0.4); }
+    .products-header { margin-bottom: 64px; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .product-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s, background 0.4s;
+      cursor: none;
+    }
+    .product-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(111,207,151,0.06), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .product-card:hover { transform: translateY(-6px); background: var(--glass-hover); }
+    .product-card:hover::after { opacity: 1; }
+    .product-card.featured {
+      border-color: rgba(111,207,151,0.3);
+      background: rgba(45,110,69,0.12);
+    }
+    .product-card.featured::before {
+      content: 'FLAGSHIP';
+      position: absolute;
+      top: 20px; right: 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 4px 10px;
+    }
+    .product-icon {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(111,207,151,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      font-size: 1.4rem;
+      background: rgba(111,207,151,0.05);
+      transform: rotate(0deg);
+      transition: transform 0.4s;
+    }
+    .product-card:hover .product-icon { transform: rotate(8deg); }
+    .product-name {
+      font-family: 'Cormorant SC', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .product-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(212,240,224,0.55);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .product-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--green-bright);
+      text-transform: uppercase;
+    }
+
+    /* ── Team ── */
+    #team {}
+    .team-header { margin-bottom: 64px; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .team-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 52px 36px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+      cursor: none;
+    }
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(111,207,151,0.3), transparent);
+    }
+    .team-card:hover { background: var(--glass-hover); }
+    .team-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      border: 1px solid rgba(111,207,151,0.2);
+      background: linear-gradient(135deg, var(--green-mid), var(--green-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant SC', serif;
+      font-size: 1.4rem;
+      color: var(--green-crystal);
+      margin-bottom: 24px;
+      box-shadow: 0 0 30px rgba(111,207,151,0.1);
+    }
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .team-role {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 20px;
+    }
+    .team-bio {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(212,240,224,0.5);
+      line-height: 1.8;
+    }
+
+    /* ── Contact / CTA ── */
+    #contact {
+      text-align: center;
+      padding: 160px 10vw;
+      position: relative;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(45,110,69,0.25), transparent 70%);
+      pointer-events: none;
+    }
+    #contact h2 { font-size: clamp(2.5rem, 6vw, 5rem); max-width: 700px; margin: 0 auto 24px; }
+    #contact p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(212,240,224,0.55);
+      max-width: 440px;
+      margin: 0 auto 52px;
+    }
+    .contact-actions { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(111,207,151,0.08);
+      padding: 48px 10vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-logo {
+      font-family: 'Cormorant SC', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      color: rgba(212,240,224,0.4);
+    }
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      color: rgba(212,240,224,0.25);
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(212,240,224,0.3);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--green-crystal); }
+
+    /* ── Crystal line decoration ── */
+    .crystal-line {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── Crystal accent bar ── */
+    .accent-bar {
+      display: inline-block;
+      width: 40px; height: 1px;
+      background: var(--gold);
+      margin-right: 14px;
+      vertical-align: middle;
+      margin-bottom: 3px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      body { cursor: auto; font-size: 16px; }
+      .cursor, .cursor-ring { display: none; }
+
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+
+      #hero { padding: 0 6vw; padding-top: 100px; min-height: 100svh; }
+      h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
+      .hero-sub { font-size: 1rem; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-ghost { text-align: center; width: 100%; padding: 16px 24px; }
+
+      section { padding: 80px 6vw; }
+      .divider { padding: 0 6vw; }
+
+      #about { grid-template-columns: 1fr; gap: 48px; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+
+      .products-grid { grid-template-columns: 1fr; gap: 2px; }
+      .team-grid { grid-template-columns: 1fr; gap: 2px; }
+
+      #contact { padding: 100px 6vw; }
+      #contact h2 { font-size: clamp(2rem, 10vw, 3rem); }
+      .contact-actions { flex-direction: column; align-items: stretch; }
+
+      footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 6vw; }
+      .footer-links { justify-content: center; }
+
+      .orb-1 { width: 200px; height: 200px; right: -60px; }
+      .orb-2 { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: clamp(2.4rem, 13vw, 3rem); }
+      .about-stats { grid-template-columns: 1fr; }
+      .stat-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="mesh"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Vel<span>roc</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#products">Produtos</a></li>
+      <li><a href="#team">Equipe</a></li>
+      <li><a href="#contact">Contato</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <p class="hero-eyebrow">Tecnologia & Comunidade</p>
+      <h1>Bots que<br/><em>constroem</em><br/>o <span class="gold">futuro.</span></h1>
+      <p class="hero-sub">
+        A Velroc é uma empresa especializada em desenvolvimento de bots para Discord — criando ferramentas que transformam servidores em comunidades verdadeiras.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary"><span>Ver Produtos</span></a>
+        <a href="#contact" class="btn-ghost">Fale Conosco</a>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-text">
+        <span class="section-label reveal">Quem somos</span>
+        <h2 class="reveal reveal-delay-1"><em>Precisão</em> em cada linha de código.</h2>
+        <p class="reveal reveal-delay-2">
+          A <strong>Velroc</strong> nasceu da convicção de que uma boa comunidade começa com a ferramenta certa. Desenvolvemos bots para Discord com foco em performance, design e experiência do usuário — do código à interface.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Nossa missão é simples: construir tecnologia que <strong>humaniza</strong> servidores e amplia o potencial de cada comunidade, independente do seu tamanho.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card reveal reveal-delay-1">
+          <span class="stat-number">01</span>
+          <span class="stat-label">Bot em produção</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Fundadores</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Comunidades atendidas</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <span class="stat-number">24h</span>
+          <span class="stat-label">Suporte ativo</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <div class="products-header">
+        <span class="section-label reveal">Nossos Produtos</span>
+        <h2 class="reveal reveal-delay-1">O que a <em>Velroc</em> cria.</h2>
+      </div>
+      <div class="products-grid">
+        <div class="product-card featured reveal reveal-delay-1">
+          <div class="product-icon">🏛️</div>
+          <div class="product-name">Architect</div>
+          <p class="product-desc">O bot que cria, protege e restaura servidores Discord com inteligência artificial. Gera estruturas completas de cargos, categorias e canais em segundos — do zero ao profissional.</p>
+          <span class="product-tag">• Produção ativa</span>
+        </div>
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-icon">🔮</div>
+          <div class="product-name">Em breve</div>
+          <p class="product-desc">Novos projetos estão sendo gestados nos bastidores da Velroc. Ferramentas que vão redefinir como comunidades Discord funcionam e crescem.</p>
+          <span class="product-tag">• Em desenvolvimento</span>
+        </div>
+        <div class="product-card reveal reveal-delay-3">
+          <div class="product-icon">⚙️</div>
+          <div class="product-name">Sob demanda</div>
+          <p class="product-desc">Desenvolvemos soluções personalizadas para servidores e empresas. Se você tem uma ideia, a Velroc tem o código para realizá-la.</p>
+          <span class="product-tag">• Consulte-nos</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+
+    <!-- TEAM -->
+    <section id="team">
+      <div class="team-header">
+        <span class="section-label reveal">Equipe</span>
+        <h2 class="reveal reveal-delay-1">As mentes por<br/>trás da <em>Velroc.</em></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-avatar">SR</div>
+          <div class="team-name">Sagaz Rivas</div>
+          <div class="team-role">CEO & Co-Fundador</div>
+          <p class="team-bio">Visionário por trás da Velroc. Lidera o desenvolvimento de produto e a estratégia da empresa, acreditando que tecnologia bem feita transforma comunidades.</p>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-avatar">LK</div>
+          <div class="team-name">Luan Kovalsy</div>
+          <div class="team-role">Co-Fundador</div>
+          <p class="team-bio">Peça fundamental na construção dos sistemas da Velroc. Combina raciocínio técnico apurado com uma visão clara de como o produto deve evoluir.</p>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-avatar">Mu</div>
+          <div class="team-name">Mulari</div>
+          <div class="team-role">Co-Fundador</div>
+          <p class="team-bio">Responsável por garantir que a experiência do usuário seja sempre o centro de tudo. Traz equilíbrio criativo e precisão à equipe.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <span class="section-label reveal">Contato</span>
+      <h2 class="reveal reveal-delay-1">Vamos <em>construir</em><br/>juntos.</h2>
+      <p class="reveal reveal-delay-2">Tem um projeto, uma ideia ou quer saber mais sobre o Architect? Estamos aqui.</p>
+      <div class="contact-actions reveal reveal-delay-3">
+        <a href="https://discord.gg/Fd48hWuZRr" target="_blank" rel="noopener" class="btn-primary"><span>Entrar no Discord</span></a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Velroc</span>
+    <ul class="footer-links">
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#products">Produtos</a></li>
+      <li><a href="#team">Equipe</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Velroc. Todos os direitos reservados.</span>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+    function animRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+    document.querySelectorAll('a, button, .product-card, .team-card, .stat-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width = '18px'; cursor.style.height = '18px'; ring.style.width = '52px'; ring.style.height = '52px'; });
+      el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

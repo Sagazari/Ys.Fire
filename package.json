@@ -1,0 +1,18 @@
+{
+  "name": "sentinela-bot",
+  "version": "1.0.0",
+  "description": "Bot de diversão do Discord - Sentinela",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "sql.js": "^1.10.3",
+    "dotenv": "^16.4.1",
+    "axios": "^1.6.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

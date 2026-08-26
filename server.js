@@ -4,6 +4,7 @@
 
 const express = require('express');
 const path = require('path');
+const { Readable } = require('stream');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -67,6 +68,48 @@ app.post('/api/chat', async (req, res) => {
   } catch (err) {
     console.error('Erro no /api/chat:', err);
     res.status(500).json({ error: 'Erro interno no servidor: ' + err.message });
+  }
+});
+
+// Rota usada pelo ai.html (modo Slofect / streaming). Repassa o corpo da
+// requisição tal como o front-end monta (model, messages, stream, etc.),
+// só adicionando a chave real no cabeçalho. Não decide nada sobre o
+// conteúdo — apenas evita que a chave apareça no navegador.
+app.post('/api/mistral', async (req, res) => {
+  try {
+    if (!MISTRAL_API_KEY) {
+      return res.status(500).json({
+        error: 'Servidor sem chave configurada. Defina a variável de ambiente MISTRAL_API_KEY no Render.'
+      });
+    }
+
+    const bodyIn = req.body || {};
+    const safeModel = ALLOWED_MODELS.has(bodyIn.model) ? bodyIn.model : 'mistral-large-latest';
+
+    const mistralResp = await fetch('https://api.mistral.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${MISTRAL_API_KEY}`
+      },
+      body: JSON.stringify({ ...bodyIn, model: safeModel })
+    });
+
+    res.status(mistralResp.status);
+    res.setHeader('Content-Type', mistralResp.headers.get('content-type') || 'application/json');
+
+    if (mistralResp.body) {
+      Readable.fromWeb(mistralResp.body).pipe(res);
+    } else {
+      res.end();
+    }
+  } catch (err) {
+    console.error('Erro no /api/mistral:', err);
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Erro interno no servidor: ' + err.message });
+    } else {
+      res.end();
+    }
   }
 });
 

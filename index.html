@@ -394,11 +394,7 @@
 <div class="modal-overlay" id="settingsOverlay">
   <div class="modal">
     <h3>Configurações</h3>
-    <div class="modal-sub">Conectado diretamente à API da Mistral. Sua chave fica salva apenas neste navegador.</div>
-    <div class="field">
-      <label>Chave de API da Mistral</label>
-      <input type="password" id="apiKeyInput" placeholder="sk-...">
-    </div>
+    <div class="modal-sub">A conexão com a Mistral é feita pelo servidor do Atlas — sua chave de API fica protegida lá, nunca neste navegador.</div>
     <div class="field">
       <label>Modelo</label>
       <select id="modelSelect">
@@ -419,7 +415,6 @@
 <script>
 (function(){
   const LS_CONVS = 'atlas_conversations_v1';
-  const LS_KEY = 'atlas_api_key_v1';
   const LS_MODEL = 'atlas_model_v1';
   const LS_ACTIVE = 'atlas_active_conv_v1';
 
@@ -450,7 +445,6 @@ Responda sempre em português do Brasil, salvo pedido contrário.`;
     newChatBtn: document.getElementById('newChatBtn'),
     settingsBtn: document.getElementById('settingsBtn'),
     settingsOverlay: document.getElementById('settingsOverlay'),
-    apiKeyInput: document.getElementById('apiKeyInput'),
     modelSelect: document.getElementById('modelSelect'),
     settingsSave: document.getElementById('settingsSave'),
     settingsCancel: document.getElementById('settingsCancel'),
@@ -667,11 +661,6 @@ Responda sempre em português do Brasil, salvo pedido contrário.`;
       newConversation();
       conv = getActive();
     }
-    const apiKey = localStorage.getItem(LS_KEY);
-    if(!apiKey){
-      openSettings();
-      return;
-    }
     conv.messages.push({ role:'user', content:text });
     autoTitle(conv, text);
     saveConvs();
@@ -689,29 +678,18 @@ Responda sempre em português do Brasil, salvo pedido contrário.`;
     ];
 
     try{
-      const resp = await fetch('https://api.mistral.ai/v1/chat/completions', {
+      const resp = await fetch('/api/chat', {
         method:'POST',
-        headers:{
-          'Content-Type':'application/json',
-          'Authorization': 'Bearer ' + apiKey
-        },
-        body: JSON.stringify({
-          model: model,
-          messages: apiMessages,
-          temperature: 0.3
-        })
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ messages: apiMessages, model: model })
       });
-      if(!resp.ok){
-        const errBody = await resp.text();
-        throw new Error(`Erro ${resp.status} da API: ${errBody.slice(0,300)}`);
-      }
       const data = await resp.json();
-      const reply = data.choices && data.choices[0] && data.choices[0].message
-        ? data.choices[0].message.content
-        : 'Não foi possível interpretar a resposta da API.';
-      conv.messages.push({ role:'assistant', content: reply });
+      if(!resp.ok){
+        throw new Error(data.error || `Erro ${resp.status} no servidor.`);
+      }
+      conv.messages.push({ role:'assistant', content: data.reply });
     }catch(e){
-      conv.messages.push({ role:'assistant', content: 'Falha ao conectar à API da Mistral: ' + e.message, error:true });
+      conv.messages.push({ role:'assistant', content: 'Falha ao conectar ao servidor do Atlas: ' + e.message, error:true });
     }finally{
       removeThinking();
       saveConvs();
@@ -728,7 +706,6 @@ Responda sempre em português do Brasil, salvo pedido contrário.`;
 
   // ---- Settings modal ----
   function openSettings(){
-    els.apiKeyInput.value = localStorage.getItem(LS_KEY) || '';
     els.modelSelect.value = localStorage.getItem(LS_MODEL) || 'mistral-large-latest';
     els.settingsOverlay.classList.add('open');
   }
@@ -738,7 +715,6 @@ Responda sempre em português do Brasil, salvo pedido contrário.`;
   els.settingsCancel.addEventListener('click', closeSettings);
   els.settingsOverlay.addEventListener('click', (e) => { if(e.target === els.settingsOverlay) closeSettings(); });
   els.settingsSave.addEventListener('click', () => {
-    localStorage.setItem(LS_KEY, els.apiKeyInput.value.trim());
     localStorage.setItem(LS_MODEL, els.modelSelect.value);
     closeSettings();
   });
@@ -782,9 +758,6 @@ Responda sempre em português do Brasil, salvo pedido contrário.`;
       if(!getActive()) activeId = conversations[0].id;
       renderConvList();
       renderMessages();
-    }
-    if(!localStorage.getItem(LS_KEY)){
-      openSettings();
     }
   }
   init();
